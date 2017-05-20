@@ -1,0 +1,16 @@
+{
+  "name": "trafficLights",
+  "version": "0.0.1",
+  "description": "code test",
+  "main": "index.js",
+  "author": "Miles Disch <milesthedisch@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.4.1",
+    "raf-stub": "^2.0.0"
+  },
+  "scripts": {
+    "test": "mocha ./test/**"
+  }
+}
