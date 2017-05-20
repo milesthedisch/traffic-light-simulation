@@ -1,7 +1,13 @@
 const clock = require('./lib/clock');
 
-const clockInstance = Object.create(clock);
-clockInstance.init();
-clockInstance.start(0, function() {
-  console.log("TICK");
-});
+window.clock = clock;
+
+function checkLights(lights) {
+  if (!lights.length) {
+    throw new TypeError(`${lights} is not an array`);
+  }
+
+}
+
+clock.init(1, () => {console.log('TICK!')});
+clock.start();

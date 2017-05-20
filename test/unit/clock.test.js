@@ -1,7 +1,7 @@
 const replaceRaf = require('raf-stub').replaceRaf;
 const assert = require('chai').assert;
 const now = require('performance-now');
-const clock = require('../lib/clock');
+const clock = require('../../lib/clock');
 
 replaceRaf();
 
@@ -13,9 +13,9 @@ describe("#clock", function() {
     requestAnimationFrame.reset();
   });
 
-  describe("init", function() {
+  describe("#init", function() {
     it("should return clock with initalized properties", function() {
-      assert.equal(clockInstance.callIndex, -1, 'The frameIndex is not -1');
+      assert.equal(clockInstance.tickerIndex, -1, 'The frameIndex is not -1');
     });
 
     it("should accept fps values as a param", function() {
@@ -25,28 +25,28 @@ describe("#clock", function() {
     })
   });
 
-  describe("start", function() {
+  describe("#start", function() {
     it("should start the clock and save the start time", function() {
       clockInstance.start();
       assert.ok(clockInstance.startTime);
     });
   });
 
-  describe("stop", function() {
+  describe("#stop", function() {
     it("should stop the clock and save the stop time", function() {
       clockInstance.stop();
       assert.ok(clockInstance.stopTime);
     });
   });
 
-  describe("loop", function() {
+  describe("#loop", function() {
     it("should call the callback if enough time has passed", function(done) {
       const then = now();
 
       function callback(params) {
         assert.equal(params.newTime, then, 'The new time was not then same as the controlled new time given');
         assert.equal(params.clockStart, 0, 'Start time was not controlled');
-        assert.equal(params.callIndex, 0, 'callIndex was not increased by 1');
+        assert.equal(params.tickerIndex, 0, 'tickerIndex was not increased by 1');
         done();
       }
 
