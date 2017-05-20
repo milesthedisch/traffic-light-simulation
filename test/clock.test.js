@@ -1,8 +1,9 @@
-const rafStub = require('raf-stub').replaceRaf();
-const now = require('performance-now');
-const assert = require('chai').assert;
-const clock = require('../lib/clock');
+import { replaceRaf } from 'raf-stub'
+import { assert } from 'chai'
+import now from 'performance-now'
+import clock from '../lib/clock'
 
+replaceRaf();
 
 describe("#clock", function() {
   let clockInstance;
