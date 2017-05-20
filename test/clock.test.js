@@ -1,7 +1,7 @@
-import { replaceRaf } from 'raf-stub'
-import { assert } from 'chai'
-import now from 'performance-now'
-import clock from '../lib/clock'
+const replaceRaf = require('raf-stub').replaceRaf;
+const assert = require('chai').assert;
+const now = require('performance-now');
+const clock = require('../lib/clock');
 
 replaceRaf();
 
@@ -50,10 +50,11 @@ describe("#clock", function() {
         done();
       }
 
+      clockInstance.ticker = callback;
       clockInstance.fpms = 20;
       clockInstance.startTime = 0;
       clockInstance.lastTime = 0;
-      clockInstance.loop(then, callback);
+      clockInstance.loop(then);
     });
   });
 });
