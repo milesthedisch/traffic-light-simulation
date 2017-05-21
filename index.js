@@ -1,5 +1,5 @@
 const traffic = require('./lib/traffic');
 
 traffic
-  .init()
+  .init({ canvas: street })
   .runSimulation();

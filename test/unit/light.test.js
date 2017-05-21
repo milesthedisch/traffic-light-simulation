@@ -26,7 +26,7 @@ describe("#light", function() {
       );
     });
 
-    it("should a type error if not given a valid color", function() {
+    it("should throw a type error if not given a valid color", function() {
       const shouldThrow = lightInstance.setState.bind(lightInstance, 1);
       assert.throw(shouldThrow, TypeError);
     });
@@ -34,7 +34,7 @@ describe("#light", function() {
 
   describe("#getState", function() {
     it("should get the state of the light", function() {
-      assert.equal(lightInstance.getState(), "GREEN");
+      assert.equal(lightInstance.getState(), "RED");
     });
   });
 
@@ -43,9 +43,13 @@ describe("#light", function() {
       lightInstance.start();
       const expected = now();
       // We need to round the numbers cause of the i/o speeds. Probably will be
-      // inconsistent between machines. Not sure on what to here.. it passes
-      // on mine ¯\_(ツ)_/¯.
+      // inconsistent between machines. Not sure on what to do here.. it passes
+      // on mine machine ¯\_(ツ)_/¯.
       assert.equal(Math.round(lightInstance.startTime), Math.round(expected));
     });
+  });
+
+  describe("#render", function() {
+    it.skip("should render a light", function(){})
   })
 });
