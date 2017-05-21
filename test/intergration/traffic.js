@@ -6,7 +6,7 @@ describe.skip("#traffic", function() {
     this.timeout(30 * 60 * 1000 + 100);
 
     traffic
-      .init({ renderer: () => {}, })
+      .init({ renderer: () => {}, canvas: false })
       .runSimulation()
 
     // My computer dosen't like this.
@@ -14,6 +14,9 @@ describe.skip("#traffic", function() {
 
     // Go grab a coffee...
     setTimeout(function() {
+
+      // Stats of the lights for 30min //
+      const tracking = traffic.lights[0].tracking.concat(traffic.lights[1].tracking);
       traffic.stopSimulation();
       done();
     }, 30 * 60 * 1000);
