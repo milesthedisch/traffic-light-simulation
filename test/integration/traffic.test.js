@@ -1,16 +1,22 @@
 const traffic = require("../../lib/traffic");
-const rafStub = require("raf-stub").replaceRaf();
 
-describe.skip("#traffic", function() {
+describe("#traffic", function() {
   it("should run simulation for 30min", function(done) {
     this.timeout(30 * 60 * 1000 + 100);
 
     traffic
-      .init({ renderer: () => {}, canvas: false })
+      .init({ 
+        renderer: () => {}, 
+        canvas: false,
+        milesstones: {
+          GREEN: 1 * 60 * 1000,
+          // 30 second yellow light requirement
+          YELLOW: (30 * 1000) + (1 * 60 * 1000),
+          // 5 min duration requirement.
+          RED: (1 * 60 * 1000) + (30 * 1000) + 100
+        }
+      })
       .runSimulation()
-
-    // My computer dosen't like this.
-    requestAnimationFrame.flush();
 
     // Go grab a coffee...
     setTimeout(function() {
