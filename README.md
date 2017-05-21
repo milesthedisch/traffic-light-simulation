@@ -15,6 +15,8 @@ To get the a browser simulation run `npm run dev` this should start the simulati
 
 To run the tests, run `npm test` or `yarn test`.
 
+To run 30min long intergration test. run `npm run test:karma`.
+
 I've made the intervals quicker between the light switching cause watching a green dot for 4.5 mins was way to long. I've commented out the required times which were 5mins total duration and 30's yellow duration. The simulated version in the browesr is much faster. 
 
 ## How it works
